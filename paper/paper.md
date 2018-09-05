@@ -117,30 +117,29 @@ self-contained.
 Since a Popper pipeline is, fundamentally, a list of Bash scripts 
 (with a specific execution order) stored in a version control 
 repository with a pre-defined folder structure, one would think that 
-it is straightforward to adopt. Based on our first-hand experience 
-following the convention, as well as teaching hands-on tutorials for 
-the past year, we have identified two broad classes of users. On the 
-one hand, there is the user that goes through the learning curve and 
-experiences the benefits of following the convention, both at the 
-personal level, and when collaborating with others. In words of some 
-of the attendees to the tutorials, "it quickly pays off" to go through 
-the learning process.
-
-On the other hand, the fact that a Popper pipeline is implemented _a 
-priori_ (i.e. before an article has written), and that creating 
-reusable pipelines implies the use of new tools (such as Docker and 
-Spack), its adoption is seen by some potential new users as a big 
-paradigm shift. The main criticism from this set of people is that 
-"there is no time" for a researcher or student to do things in this 
-"radically new way".
+the convention it is straightforward to adopt. Based on our first-hand 
+experience following the convention in our laboratory, as well as 
+teaching hands-on tutorials for the past year, we have identified two 
+broad classes of users. On the one hand, there is the user that goes 
+through the learning curve and experiences the benefits of following 
+the convention, both at the personal level, and when collaborating 
+with others. In words of some of the attendees to the tutorials, "it 
+quickly pays off" to go through the learning process. On the other 
+hand, the fact that a Popper pipeline is implemented _a priori_ (i.e. 
+before an article has written), and that creating reusable pipelines 
+implies the use of new tools (such as Docker and Spack), its adoption 
+is seen by some potential new users as a big paradigm shift. The main 
+criticism from this set of people is that "there is no time" for a 
+researcher or student to do things in this "radically new way".
 
 Given the above, we see an opportunity to develop new technology to 
-close this gap. The main objective is to create a platform where it is 
-_ridiculously easy_ to both, implement and re-execute experimentation 
-pipelines. Our target quantifiable goals are "push-button" 
-repeatability (re-execute an existing experiment) and "no more than 10 
-minutes" to assemble the skeletal components of a new scientific 
-exploration pipeline (a few clicks on a web-based GUI should suffice).
+close the gap for those that still resist to take the leap. The main 
+objective is to create a platform where it is _ridiculously easy_ to 
+both, implement and re-execute experimentation pipelines. Our target 
+quantifiable goals are "push-button" repeatability (re-execute an 
+existing experiment) and "no more than 10 minutes" to assemble the 
+skeletal components of a new scientific exploration pipeline (a few 
+clicks on a web-based GUI should suffice).
 
 [^devopstoolkit]: For our purposes, any tool that can be invoked on 
 the CLI and can be given a script as input is a so-called "DevOps" 
@@ -151,12 +150,75 @@ tool. For more on other aspects of DevOps tools see
 
 # Black Swan {#sec:components}
 
+Once implemented, Black Swan will be a community-driven 
+reproducibility platform that allows the agile delivery of scientific 
+insights. There are four main functional components for the platform.
+
+**3rd Party Service Integrations**
+
+One design principle is not to re-invent the wheel. That is, rather 
+than re-implementing functionality found in other services or tools, 
+we Black Swan will have a pluggable mechanism so that it can integrate 
+with these. A diagram of basic integrations is shown in 
+@Fig:integrations.
+
+![Diagram showing how Black Swan leverages existing services.
+](figures/square.png){#fig:integrations}
+
+As the project evolves, more and more integrations would be 
+implemented.
+
+**Pipeline Catalog and Pipeline Builder**
+
+In order to facilitate the adoption of the DevOps practice, the 
+platform will incorporate a GUI component to allow users to visualize 
+pipelines and their stages. In particular, a _Pipeline Builder_ will 
+allow users to "mix and match" stages (@Fig:pipebuilder) from an 
+existing catalog of community-maintained pipelines (@Fig:catalog). 
+
+![Sketch of the pipeline builder GUI.
+](figures/square.png){#fig:pipebuilder}
+
+These catalog and builder features illustrate the importance that 
+community will have in the success of Black Swan as an OSS project. 
+Unless there is a community-wide effort in place, maintaining the 
+integrity of a pipeline by a single individual will be too onerous of 
+a task.
+
+![Skecth of the catalog of pipelines.
+](figures/square.png){#fig:catalog}
+
+**Automated Validation**
+
+A third key component is the notion of pipeline validations. A 
+validation is domain-agnostic way of checking that domain-specific 
+results are valid. In other words, these are checks that verify that 
+the outcome of the execution of a pipeline is as the original authers 
+expected it to be. Black Swan will incorporate facilities to quickly 
+visualize the status of a pipeline with respect to domain-specific 
+validations. @Fig:dashboard shows a concept of this feature.
+
+![A sketch of a dashboard with validations as first-class citizens in 
+the GUI.
+](figures/square.png){#fig:dashboard}
+
+**Environment Capture and Automated Analysis**
+
+When the validation stage for a pipeline fails, we have found a black 
+swan, i.e. the domain-specific expectations of the re-execution of a 
+pipeline have not hold. The next task is to find why. Black Swan will 
+incorporate facilities to automatically capture the execution 
+environment for a pipeline, in machine readable format so that a 
+post-processing step can analyze it and compare it against previous 
+successful executions in order to try to determine root causes of 
+irreproducibility, or to aid researchers in finding them
+
 # Use cases {#sec:cases}
 
-We describe two use cases for which we envision Black Swan to be 
+We describe three use cases for which we envision Black Swan to be 
 applicable. We envision many more but we see these as key use cases.
 
-## Technology Transfer
+**Technology Transfer**
 
 Organizations with _Research and Development_ units such as tech 
 companies and government-funded institutions (DOE labs, NASA, 
@@ -166,7 +228,7 @@ _Black Swan_ internally, using a public one (or connecting a public
 with a private one), would allow organizations to streamline tech (and 
 knowledge) transfers.
 
-## Research Curation
+**Research Curation**
 
 In the past decade, institutional libraries have invested a 
 significant amount of resources to the creation of _Data 
@@ -180,21 +242,37 @@ complementing these efforts, since Popper enables the curation of
 research by enabling all these existing repositories to be easily 
 executed and validated over time.
 
+**Self-validation of Academic Artifacts**
+
+A growing number of Computer Science conferences and journals 
+incorporate an artifact evaluation process in which authors of an 
+article submit an artifact description[^ad] (AD) that is tested by a 
+committee, in order to verify that experiments presented in a paper 
+can be re-executed by others. Instead of manually creating and testing 
+an AD, Black Swan can be leveraged to automatically test for the 
+validity of an experiment, assuming the pipeline(s) corresponding to 
+an article have codified expectations on their results.
+
+[^ad]: http://ctuning.org/ae/submission.html
+
 # Related Software {#sec:related}
 
 There are mainly two types of existing software that relate to Black 
 Swan.
 
-  * **Continuous Integration (CI) Software**. Black Swan will leverage 
-    CI services to execute and validate research pipelines. OSS 
-    communities such as those developing and using Gitlab, Github and 
-    Jenkins can benefit from this platform.
+**Continuous Integration (CI) Software**
 
-  * **Code and Data Repository Management Software**. OSS communities 
-    developing code and data management repositories such as [DOE 
-    Code](https://www.osti.gov/doecode/), [Zenodo](http://zenodo.org/) 
-    and [OSF](http://osf.io/) can leverage Black Swan to add 
-    executable features to the repositories that they curate.
+Black Swan will leverage CI services to execute and validate research 
+pipelines. OSS communities such as those developing and using Gitlab, 
+Github and Jenkins can benefit from this platform.
+
+**Code/Dataset Management Software**
+
+OSS communities developing code and data management repositories such 
+as [DOE Code](https://www.osti.gov/doecode/), 
+[Zenodo](http://zenodo.org/) and [OSF](http://osf.io/) can leverage 
+Black Swan to add executable features to the repositories that they 
+curate.
 
 # References {.unnumbered}
 
