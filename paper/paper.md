@@ -19,8 +19,8 @@ computational and data science domains, a gap exists between current
 practices and the ideal of having every new scientific discovery be 
 _easily_ reproducible [@donoho_reproducible_2009]. Advances in 
 computer science (CS) and software engineering slowly and painfully 
-make their way into these domains, even in (paradoxically) CS research 
-[@fursin_collective_2013 ; @collberg_repeatability_2016].
+make their way into these domains---even in CS research itself
+[@fursin_collective_2013 ; @collberg_repeatability_2016], paradoxically.
 
 Popper [@jimenez_popper_2017] is an experimentation protocol and CLI 
 tool for implementing scientific exploration pipelines following a 
@@ -60,12 +60,14 @@ them to investigate **why**.
 
 # Motivation {#sec:motivation}
 
-Following the Popper convention begins by defining a pipeline for a 
-scientific exploration, i.e. a sequence of high-level steps that are 
-carried out when executing an experiment or analysis. For example, a 
-data analysis pipeline may consist of four stages: (1) obtain a 
-dataset; (2) pre-process the data; and (3) run an analysis on the 
-data; (4) produce plots.
+Following the Popper convention turns out to be a significant
+paradigm shift for many users that is hard to accept in the context
+of tight submission for publication deadlines. It begins by defining
+a pipeline for a scientific exploration, i.e. a sequence of
+high-level steps that are carried out when executing an experiment or
+analysis. For example, a data analysis pipeline may consist of four
+stages: (1) obtain a dataset; (2) pre-process the data; (3) run
+an analysis on the data; and (4) produce plots.
 
 The contents of a folder containing scripts for a pipeline are shown 
 in @Lst:pipe (many more examples are available on 
