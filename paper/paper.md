@@ -247,9 +247,9 @@ incorporate an artifact evaluation process in which authors of an
 article submit an artifact description[^ad] (AD) that is tested by a 
 committee, in order to verify that experiments presented in a paper 
 can be re-executed by others. Instead of manually creating and testing 
-an AD, Black Swan can be leveraged to automatically test for the 
-validity of an experiment, assuming the pipeline(s) corresponding to 
-an article have codified expectations on their results.
+an AD, Black Swan can be leveraged to automatically test the validity 
+of an experiment, assuming the pipeline(s) corresponding to an article 
+have codified expectations on their results.
 
 [^ad]: http://ctuning.org/ae/submission.html
 
