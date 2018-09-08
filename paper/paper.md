@@ -3,13 +3,12 @@ title: "Spotting Black Swans With Ease: The Case for a Practical Reproducibility
 shorttitle: Black Swan
 author: Ivo Jimenez and Carlos Maltzahn (UC Santa Cruz)
 abstract: |
-  Advances in agile software delivery methodologies and tools 
-  (commonly referred to as _DevOps_) have not yet materialized in 
-  academic scenarios such as university, industry and government 
-  laboratories. In this position paper we make the case for _Black 
-  Swan_, a platform for the agile implementation, maintenance and 
-  curation of experimentation pipelines by embracing a DevOps 
-  approach.
+ Advances in agile software delivery methodologies and tools (commonly 
+ referred to as _DevOps_) have not yet materialized in academic 
+ scenarios such as university, industry and government laboratories. 
+ In this position paper we make the case for _Black Swan_, a platform 
+ for the agile implementation, maintenance and curation of 
+ experimentation pipelines by embracing a DevOps approach.
 ---
 
 # Introduction
@@ -41,14 +40,14 @@ make the case for building _Black Swan_[^name], a platform for
 _practical_ reproducible research. In a nutshell, Black Swan enables 
 the agile delivery of software created in universities and other 
 research institutions, significantly accelerating technology transfers 
-between research and operation.
+between research and operational environments.
 
 This paper is organized as follows. @Sec:motivation expands on the 
 need for Black Swan, while @Sec:components presents the components of 
 the proposed platform and how they address the current gaps. 
 @Sec:cases illustrates the utility of the platform by describing use 
-cases where Black Swan would be used. We close with how related 
-software (@Sec:related) and Challenges (@Sec:challenges).
+cases where Black Swan would be used. We discuss related software in 
+@Sec:related and Challenges in @Sec:challenges.
 
 [^name]: Black swans are typically used to illustrate the concept of 
 falsifiability: the statement "all swans are white" is proven false 
@@ -275,10 +274,10 @@ Managing changes to code using version-control systems; managing data
 with dataset management systems; continuously integrating (CI) and 
 deploying (CD) software; all have become standard practices in OSS 
 communities, not because of a fad but because of the quantifiable 
-benefits that following best practices imply. To the contrary, in R&D 
+benefits that following best practices bring. To the contrary, in R&D 
 settings, these practices are seen as a burden. The biggest challenge 
-we face lies in changing the culture within organizations and teams. 
-Finding the right incentives so that these users can make the leap and 
+we face lies in changing the culture within organizations and teams; 
+finding the right incentives so that these users can make the leap and 
 adopt agile practices, so they can enjoy the benefits that come from 
 embracing DevOps.
 
