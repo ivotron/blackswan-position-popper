@@ -1,14 +1,15 @@
 ---
-title: "Spotting Black Swans With Ease: The Case for a Practial Reproducibility Platform"
+title: "Spotting Black Swans With Ease: The Case for a Practical Reproducibility Platform"
 shorttitle: Black Swan
 author: Ivo Jimenez and Carlos Maltzahn (UC Santa Cruz)
 abstract: |
   Advances in agile software delivery methodologies and tools 
-  (commonly referred to DevOps) have not yet been materialized in 
-  academic scenarios such as universities and research laboratories. 
-  In this position paper we make the case for _Black Swan_, a platform 
-  for the agile implemention, maintainenance and curation of 
-  experimentation pipelines by embracing a DevOps approach.
+  (commonly referred to as _DevOps_) have not yet materialized in 
+  academic scenarios such as university, industry and government 
+  laboratories. In this position paper we make the case for _Black 
+  Swan_, a platform for the agile implementation, maintenance and 
+  curation of experimentation pipelines by embracing a DevOps 
+  approach.
 ---
 
 # Introduction
@@ -22,9 +23,9 @@ make their way into these domains---even in CS research itself
 [@fursin_collective_2013 ; @collberg_repeatability_2016], paradoxically.
 
 Popper [@jimenez_popper_2017] is an experimentation protocol and CLI 
-tool for implementing experimentation pipelines following a DevOps 
-approach. The goal of Popper is to bring the same methods and tools 
-used for the agile delivery of software, known as DevOps 
+tool for implementing scientific exploration pipelines following a 
+DevOps approach. The goal of Popper is to bring the same methods and 
+tools used for the agile delivery of software, known as DevOps 
 [@kim_devops_2016], to scientists and industry researchers.
 
 Our experience in the past four years developing and evangelizing the 
@@ -42,13 +43,12 @@ the agile delivery of software created in universities and other
 research institutions, significantly accelerating technology transfers 
 between research and operation.
 
-This paper is organized as follows. Next section ([@Sec:motivation]) 
-expands on the need for _Black Swan_, while section [@Sec:components] 
-presents the components of the proposed platform and how they address 
-the current gaps. Section [@sec:cases] illustrates the utility of the 
-platform by describing use cases where Black Swan would be used. We 
-close with related work and how Black Swan is different to other 
-existing software ([@sec:related]).
+This paper is organized as follows. @Sec:motivation expands on the 
+need for Black Swan, while @Sec:components presents the components of 
+the proposed platform and how they address the current gaps. 
+@Sec:cases illustrates the utility of the platform by describing use 
+cases where Black Swan would be used. We close with how related 
+software (@Sec:related) and Challenges (@Sec:challenges).
 
 [^name]: Black swans are typically used to illustrate the concept of 
 falsifiability: the statement "all swans are white" is proven false 
@@ -84,7 +84,6 @@ paper-repo/pipelines/gassyfs
 |  \  config.yml
 |- docker
 |  |- Dockerfile
-|  \  entrypoint.sh
 |- geni
 |  └── cloudlab_request.py
 |- results
@@ -92,7 +91,6 @@ paper-repo/pipelines/gassyfs
 |  \  visualize.ipynb
 |- run.sh
 |- setup.sh
-|- teardown.sh
 \  validate.sh
 ```
 
@@ -154,41 +152,39 @@ tool. For more on other aspects of DevOps tools see
 
 Once implemented, Black Swan will be a community-driven 
 reproducibility platform that allows the agile delivery of scientific 
-insights. There are four main functional components for the platform.
+insights. There are four main functional components of the platform.
 
-**3rd Party Service Integrations**
+**External Service Integrations**
 
 One design principle is not to re-invent the wheel. That is, rather 
 than re-implementing functionality found in other services or tools, 
-we Black Swan will have a pluggable mechanism so that it can integrate 
+Black Swan will have a pluggable mechanism so that it can integrate 
 with these. A diagram of basic integrations is shown in 
-@Fig:integrations.
+@Fig:integrations. Version control services will store a pipeline's 
+content; input and output will be version-controlled by connecting to 
+dataset management services; CI services will continuously validate 
+the integrity of a pipeline; and a database service will be used to 
+store the history of executions for each pipeline, and as much 
+environmental information as possible.
 
-![Diagram showing how Black Swan leverages existing services.
-](figures/square.png){#fig:integrations}
-
-As the project evolves, more and more integrations would be 
-implemented.
+![Black Swan will leverage existing services.
+](figures/integrations.png){#fig:integrations}
 
 **Pipeline Catalog and Pipeline Builder**
 
 In order to facilitate the adoption of the DevOps practice, the 
 platform will incorporate a GUI component to allow users to visualize 
-pipelines and their stages. In particular, a _Pipeline Builder_ will 
-allow users to "mix and match" stages (@Fig:pipebuilder) from an 
-existing catalog of community-maintained pipelines (@Fig:catalog). 
+Popper pipelines and their stages. In particular, a _Pipeline Builder_ 
+will allow users to "mix and match" stages from an existing catalog of 
+community-maintained pipelines (@Fig:pipecatalog). The reusable 
+catalog and the pipeline builder illustrate the importance that 
+community will have in the success of Black Swan as an OSS project. 
+Unless there is a community-wide effort in place. Develop and 
+maintaining a pipeline by a single individual is too overwhelming.
 
 ![Sketch of the pipeline builder GUI.
-](figures/square.png){#fig:pipebuilder}
+](figures/pipecatalog.png){#fig:pipecatalog}
 
-These catalog and builder features illustrate the importance that 
-community will have in the success of Black Swan as an OSS project. 
-Unless there is a community-wide effort in place, maintaining the 
-integrity of a pipeline by a single individual will be too onerous of 
-a task.
-
-![Skecth of the catalog of pipelines.
-](figures/square.png){#fig:catalog}
 
 **Automated Validation**
 
@@ -202,7 +198,7 @@ validations. @Fig:dashboard shows a concept of this feature.
 
 ![A sketch of a dashboard with validations as first-class citizens in 
 the GUI.
-](figures/square.png){#fig:dashboard}
+](figures/dashboard.png){#fig:dashboard}
 
 **Environment Capture and Automated Analysis**
 
@@ -251,16 +247,13 @@ incorporate an artifact evaluation process in which authors of an
 article submit an artifact description[^ad] (AD) that is tested by a 
 committee, in order to verify that experiments presented in a paper 
 can be re-executed by others. Instead of manually creating and testing 
-an AD, Black Swan can be leveraged to automatically test for the 
-validity of an experiment, assuming the pipeline(s) corresponding to 
-an article have codified expectations on their results.
+an AD, Black Swan can be leveraged to automatically test the validity 
+of an experiment, assuming the pipeline(s) corresponding to an article 
+have codified expectations on their results.
 
 [^ad]: http://ctuning.org/ae/submission.html
 
 # Related Software {#sec:related}
-
-There are mainly two types of existing software that relate to Black 
-Swan.
 
 **Continuous Integration (CI) Software**
 
@@ -275,6 +268,19 @@ as [DOE Code](https://www.osti.gov/doecode/),
 [Zenodo](http://zenodo.org/) and [OSF](http://osf.io/) can leverage 
 Black Swan to add executable features to the repositories that they 
 curate.
+
+# Challenges {#sec:challenges}
+
+Managing changes to code using version-control systems; managing data 
+with dataset management systems; continuously integrating (CI) and 
+deploying (CD) software; all have become standard practices in OSS 
+communities, not because of a fad but because of the quantifiable 
+benefits that following best practices imply. To the contrary, in R&D 
+settings, these practices are seen as a burden. The biggest challenge 
+we face lies in changing the culture within organizations and teams. 
+Finding the right incentives so that these users can make the leap and 
+adopt agile practices, so they can enjoy the benefits that come from 
+embracing DevOps.
 
 # References {.unnumbered}
 
