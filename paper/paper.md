@@ -96,9 +96,8 @@ paper-repo/pipelines/gassyfs
 Thus, the Popper convention can be summarized in three high-level 
 guidelines:
 
- 1. At each stage of Pick one or more tools from the DevOps toolkit 
-    [^devopstoolkit] for each stage of the scientific experimentation 
-    workflow.
+ 1. Pick one or more tools from the DevOps toolkit [^devopstoolkit] to 
+    implement each stage of a scientific experimentation pipeline.
  2. Put all associated scripts (experiment and manuscript) in version 
     control, in order to provide a self-contained repository.
  3. Document changes as an experiment evolves, in the form of commits 
@@ -126,7 +125,7 @@ with others. In words of some of the attendees to the tutorials, "it
 quickly pays off" to go through the learning process. On the other 
 hand, the fact that a Popper pipeline is implemented _a priori_ (i.e. 
 before an article has written), and that creating reusable pipelines 
-implies the use of new tools (such as Docker and Spack), its adoption 
+implies the use of new tools (such as Docker or Spack), its adoption 
 is seen by some potential new users as a big paradigm shift. The main 
 criticism from this set of people is that "there is no time" for a 
 researcher or student to do things in this "radically new way".
@@ -178,8 +177,9 @@ will allow users to "mix and match" stages from an existing catalog of
 community-maintained pipelines (@Fig:pipecatalog). The reusable 
 catalog and the pipeline builder illustrate the importance that 
 community will have in the success of Black Swan as an OSS project. 
-Unless there is a community-wide effort in place. Develop and 
-maintaining a pipeline by a single individual is too overwhelming.
+Unless there is a community-wide effort in place, Black Swan will not 
+succeed as a viable project; developing and maintaining a pipeline by 
+a single individual is too overwhelming.
 
 ![Sketch of the pipeline builder GUI.
 ](figures/pipecatalog.png){#fig:pipecatalog}
@@ -190,7 +190,7 @@ maintaining a pipeline by a single individual is too overwhelming.
 A third key component is the notion of pipeline validations. A 
 validation is domain-agnostic way of checking that domain-specific 
 results are valid. In other words, these are checks that verify that 
-the outcome of the execution of a pipeline is as the original authers 
+the outcome of the execution of a pipeline is as the original authors 
 expected it to be. Black Swan will incorporate facilities to quickly 
 visualize the status of a pipeline with respect to domain-specific 
 validations. @Fig:dashboard shows a concept of this feature.
@@ -201,14 +201,14 @@ the GUI.
 
 **Environment Capture and Automated Analysis**
 
-When the validation stage for a pipeline fails, we have found a black 
-swan, i.e. the domain-specific expectations of the re-execution of a 
-pipeline have not hold. The next task is to find why. Black Swan will 
-incorporate facilities to automatically capture the execution 
+Whenever the validation stage of a pipeline fails, we have found a 
+black swan, i.e. the domain-specific expectations of the re-execution 
+of a pipeline have not hold. The next task is to find why. Black Swan 
+will incorporate facilities to automatically capture the execution 
 environment for a pipeline, in machine readable format so that a 
 post-processing step can analyze it and compare it against previous 
 successful executions in order to try to determine root causes of 
-irreproducibility, or to aid researchers in finding them
+irreproducibility, or to aid researchers in finding them.
 
 # Use cases {#sec:cases}
 
@@ -217,18 +217,17 @@ applicable. We envision many more but we see these as key use cases.
 
 **Technology Transfer**
 
-Organizations with _Research and Development_ units such as tech 
+Organizations with Research and Development (R&D) units such as tech 
 companies and government-funded institutions (DOE labs, NASA, 
 universities) spend significant amounts of resources transferring 
 technology from R&D to production environments. Deploying an instance 
-_Black Swan_ internally, using a public one (or connecting a public 
-with a private one), would allow organizations to streamline tech (and 
-knowledge) transfers.
+_Black Swan_ internally (or using a public one) would allow 
+organizations to streamline tech (and knowledge) transfers.
 
 **Research Curation**
 
 In the past decade, institutional libraries have invested a 
-significant amount of resources to the creation of _Data 
+significant amount of resources in the creation of _Data 
 Repositories_. These efforts are aimed at systematically managing the 
 output of research. For example, EU's [OpenAIRE](http://openaire.eu/) 
 initiative is a catalog of software and data containing more than 80 
