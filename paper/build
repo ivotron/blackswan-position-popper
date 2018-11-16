@@ -9,7 +9,7 @@ docker run \
   -v `pwd`/paper.md:/root/paper.md:z \
   -v `pwd`/figures:/root/figures:z \
   -v `pwd`/out:/root/out:z \
-  ivotron/pandoc:2.2.3.2 \
+  ivotron/pandoc:2.3.1 \
     --from markdown+smart \
     --metadata documentclass=article \
     --metadata classoption=twocolumn \
